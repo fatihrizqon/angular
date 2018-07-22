@@ -1,0 +1,100 @@
+<div class="mdl-grid">
+
+<mat-card class="login-card mat-elevation-z2">
+  <mat-card-header class="header-login-card"  matTooltip="Informasi Riwayat Tempat Praktik Industri Mahasiswa Jurusan Pendidikan Teknik Elektronika & Informatika Fakultas Teknik Universitas Negeri Yogyakarta">
+      <mat-card-title><h5>Internship Program Tracer</h5></mat-card-title>
+      <mat-card-subtitle><label class="white-text">Jurusan Pendidikan Teknik Elektronika & Informatika Fakultas Teknik Universitas Negeri Yogyakarta</label></mat-card-subtitle>
+  </mat-card-header>
+  
+  <div class="flash-message">
+    <mat-card-content>
+      <flash-message>
+      </flash-message>
+    </mat-card-content>
+  </div>
+  
+  <mat-card-content>
+    <mat-tab-group class="login-tab-group">
+      <mat-tab label="Masuk">
+        <div class="login-tab-content">
+          <h5 class=""><b>Masuk</b></h5>
+          <form (submit)="loginUser($event)">
+          <div class="login-container">
+            <mat-form-field hintLabel="Min/Max 11 Angka">
+              <input name="nim" [(ngModel)]="nim" matInput #input minlength="11" maxlength="11" type="number" placeholder="NIM" required>
+              <mat-icon matSuffix matTooltip="Masukkan NIM mahasiswa yang telah terdaftar.">credit_card</mat-icon>
+              <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input name="password" [(ngModel)]="password" minlength="6" matInput placeholder="Masukkan Password" [type]="hide ? 'password' : 'text'" required>
+              <mat-icon matSuffix matTooltip="Masukkan Password sesuai dengan NIM yang telah terdaftar." (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-form-field>
+            <div align="right">
+              <button mat-raised-button color="primary">Masuk</button>
+            </div>
+            <div align="left"> 
+              <!-- <a href="#">Lupa password?</a> -->
+            </div>
+          </div>
+        </form>
+        </div>
+      </mat-tab>
+      <mat-tab label="Daftar">
+        <div class="register-tab-content">
+          <h5>Daftar</h5>
+  
+          <form (submit)="registerUser($event)">
+          <div class="login-container">
+            <mat-form-field>
+              <input name="nim" [(ngModel)]="nim" matInput #input type="number" placeholder="NIM" required>
+              <mat-icon matSuffix matTooltip="Masukkan Nomor Induk Mahasiswa dengan benar.">credit_card</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input name="nama" [(ngModel)]="nama" matInput #input maxlength="40" type="text" placeholder="Nama Lengkap" required>
+              <mat-icon matSuffix matTooltip="Masukkan Nama Lengkap" >person</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input name="email" [(ngModel)]="email" matInput #input maxlength="40" type="text" placeholder="E-mail" required>
+              <mat-icon matSuffix matTooltip="Masukkan Email UNY / Email Aktif" >mail</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input name="password" [(ngModel)]="password" matInput placeholder="Masukkan Password" [type]="hide ? 'password' : 'text'" required>
+              <mat-icon matSuffix matTooltip="Masukkan Password dengan benar"  (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input name="repassword" [(ngModel)]="repassword" matInput placeholder="Masukkan Password" [type]="hide ? 'password' : 'text'" required>
+              <mat-icon matSuffix  matTooltip="Masukkan Password dengan benar" (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-slide-toggle (change)="onChange($event)" matTooltip="Apabila sudah Praktik Industri, silahkan pilih.">
+              Sudah Praktik Industri
+            </mat-slide-toggle>
+            <br>
+            <div align="right">
+              <button mat-raised-button class="login-btn">Daftar</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions> -->
+  <mat-divider></mat-divider>
+  <div align="center">
+    <br>
+      Copyright © 2018 - <a href="https://instagram.com/fatihrizqon">Fatih</a> PTIF UNY 2014 
+      <!-- Material Design oleh <a href="https://material.angular.io/">Material Angular</a> -->
+  </div>
+</mat-card>
+
+</div>
+

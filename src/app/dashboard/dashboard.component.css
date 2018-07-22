@@ -1,0 +1,51 @@
+mat-paginator{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+mat-card-avatar{
+    background-color: #FFB300;
+}
+.avatar-icon{ 
+    color: #FFB300;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+.company-card{
+    max-width: 100%;
+    height: auto;
+}
+
+.mdl-grid.center-items {
+    justify-content: center;
+}
+.mat-card-actions{
+    background-color: #FFB300;
+    color: #FFF;
+}
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+} 
+.inner {
+    width: 400px;
+    /*whatever width you want*/
+}
+.search-form-field {
+    width: 100%;
+}
+.search-container{
+    background-color: #FFF;
+}

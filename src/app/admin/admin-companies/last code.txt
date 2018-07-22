@@ -1,0 +1,117 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { CompanyService } from '../../../services/company.service';
+import { DataSource } from '@angular/cdk/collections';
+import { Company } from '../../../models/company.model';
+import { Observable } from 'rxjs/Observable';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+@Component({
+  selector: 'app-admin-companies',
+  templateUrl: './admin-companies.component.html',
+  styleUrls: ['../admin/admin.component.css']
+})
+export class AdminCompaniesComponent implements OnInit {
+  company      : Object;
+  companies    : Object;
+  Data         : Company[] = [];
+  ELEMENT_DATA : Company[] = this.Data;
+  displayedColumns = ['perusahaan', 'alamat', 'telepon','email','website','students','kategori','author','update_by', 'option'];
+
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource = new CompanyDataSource(this.companyService);
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase();
+    // this.dataSource.filter = filterValue; 
+  }
+ 
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private companyService: CompanyService
+  ) 
+  {
+    let user = localStorage.getItem('user');
+    let token = localStorage.getItem('id_token');
+    let level = Number(localStorage.getItem('level'));
+    if(this.authService.loggedIn(user, token, level)) {
+      if(level == 0){
+        this.router.navigate(['/dashboard']);
+        console.log('Unauthorized.');
+      }else{
+        console.log('Admin Mode.');
+      }
+    }else{
+        this.router.navigate(['/dashboard']);
+        console.log('Unauthorized.');
+    }
+  }
+
+  ngOnInit(){
+    this.companyService.getCompanies().subscribe(companies => {
+      this.companies = companies;
+      this.dataSource = new CompanyDataSource(Data)
+      console.log(this.dataSource)
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+  }
+
+  getCompany(data){
+    this.companyService.getCompany(data._id).subscribe(
+      company => {
+        this.router.navigate(['companies/'+data._id]);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  updateCompany(companies){
+    this.companyService.setter(companies);
+    this.router.navigate(['admin/companies/update/'+companies._id]);
+  }
+  
+  deleteCompany(company){
+    var _id = company._id;
+    this.companyService.deleteCompany(_id).subscribe(
+      _id => {
+        console.log("Delete Success.");
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+}
+
+export class CompanyDataSource extends DataSource<Company>{
+  constructor(private companyService: CompanyService){
+      super();
+    }
+    connect(): Observable<Company[]>{
+        return this.companyService;
+    }
+    disconnect(){}
+  }
+
+// export class CompanyDataSource extends MatTableDataSource<any>{
+//   constructor(private companyService:CompanyService){
+//     super();
+//   }
+//   connect(): Observable<Company[]>{
+//     this.companyService.getCompanies();
+//   }
+  
+//   disconnect(){}
+// }
+

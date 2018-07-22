@@ -1,0 +1,11 @@
+mat-toolbar{
+    background-color: #FFB300;
+    color: #FFF;
+}
+.mat-raised-button{
+    background-color: #FFB300;
+    color: #FFF;
+}
+.mat-menu-button{
+    width: 200px;
+}

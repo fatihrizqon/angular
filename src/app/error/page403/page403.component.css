@@ -1,0 +1,48 @@
+.mdl-grid{
+    /* background-image: url(http://backgroundcheckall.com/wp-content/uploads/2017/12/blurred-background-app-9.jpg); */
+    background-image: url(http://i66.tinypic.com/23vc9ar.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 98.35%;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #FFF;
+    display: "block";
+    vertical-align :middle;
+}
+h1{
+  margin-top:50%;
+  font-family: 'Quicksand';
+  color: #FFF;
+  font-weight: bold;
+  
+}
+@media screen and (max-width: 768px) {
+    h1{
+        margin-top:100%;
+        font-size:20px;
+        color: #FFF;
+        font-weight: bold;
+    }
+    h2{
+        font-size:15px;
+        color: #FFF;
+        font-weight: bold;
+    }
+}
+h2{
+  font-family: 'Quicksand';
+  color: #FFF;
+  font-weight: bold;
+  
+}
+.back-btn{
+    font-family: 'Quicksand';
+    color: #FFF;
+    background-color: #00E676;
+}

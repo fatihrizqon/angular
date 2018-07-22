@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+body{
+  font-family: 'Quicksand', sans-serif;
+  /* background-color: #E8EAF6; */
+  /* background-color: #ECEFF1; */
+  background-color: #FFF;
+  /* background-color: #00796B; */
+
+}
+h1{
+  font-family: 'Quicksand', sans-serif;
+}
+h2{
+  font-family: 'Quicksand', sans-serif;
+}
+h3{
+  font-family: 'Quicksand', sans-serif;
+}
+h4{
+  font-family: 'Quicksand', sans-serif;
+}
+h5{
+  font-family: 'Quicksand', sans-serif;
+}
+h6{
+  font-family: 'Quicksand', sans-serif;
+}
+label{
+  font-family: 'Quicksand', sans-serif;
+}
+div{
+  font-family: 'Quicksand', sans-serif;
+}
+ul{
+  list-style: none;
+  margin: 0 0 0 0;
+  padding: 0;
+  text-align: left;
+}
+.nav-spacer {
+  flex: 1 1 auto;
+}
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #000;
+  text-align: center;
+  position: absolute;
+}
+mat-card{
+  margin: 0 auto
+}
+.add-btn{
+  color:  #FFC107;
+}
+.edit-btn{
+  color : #1E88E5;
+}
+.save-btn{
+  color : #FFC107;
+}
+.delete-btn{
+  color:#EF5350;
+}
+a{
+  color: #FFC107;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
+}

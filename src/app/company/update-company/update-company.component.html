@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--8-col white-background">
+    <mat-card>
+      <mat-card-content>
+      <div class="warning-card">
+        <mat-card-content>
+          <flash-message>
+          </flash-message>
+        </mat-card-content>
+      </div>
+      <form *ngIf="company">
+        <mat-form-field>
+          <input name="nama" [(ngModel)]="company.perusahaan" matInput #input type="text" placeholder="Nama Perusahaan" required>
+          <mat-icon matSuffix>business</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <input name="alamat" [(ngModel)]="company.alamat" matInput #input type="text" placeholder="Alamat Perusahaan" required>
+          <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <input name="email_perusahaan" [(ngModel)]="company.email_perusahaan" matInput #input type="email_perusahaan" placeholder="Email Perusahaan" required>
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <input name="telepon" [(ngModel)]="company.telepon" matInput #input type="telepon" placeholder="Telepon Perusahaan" required>
+            <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <span matPrefix>www. &nbsp;</span>
+            <input name="website" [(ngModel)]="company.website" matInput #input type="website" placeholder="Website Perusahaan" required>
+            <mat-icon matSuffix>language</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea name="deskripsi"  rows="5" cols="40"   [(ngModel)]="company.deskripsi" matInput #input type="deskripsi" placeholder="Deskripsi Perusahaan" required></textarea>
+            <mat-icon matSuffix>textsms</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select name="kategori" [(ngModel)]="company.kategori" #kategoriValue placeholder="Bidang">
+              <mat-option value="Sistem Informasi">Sistem Informasi</mat-option>
+              <mat-option value="Multimedia">Multimedia</mat-option>
+              <mat-option value="Jaringan Komputer">Jaringan Komputer</mat-option>
+              <mat-option value="Telekomunikasi Seluler">Telekomunikasi Seluler</mat-option>
+              <mat-option value="Audio Video">Audio Video</mat-option>
+              <mat-option value="Elektronika Industri">Elektronika Industri</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div align="right">
+            <a mat-raised-button class="save-btn" (click)="updateCompany(company)" mat-raised-button>Simpan</a>
+        </div>
+      </form>
+      </mat-card-content>
+    </mat-card>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
+
+<app-footer></app-footer>
+  
+  
+  

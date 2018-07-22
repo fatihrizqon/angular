@@ -1,0 +1,66 @@
+mat-card{
+    margin: auto;
+  }
+  h5{
+    font-family: 'Quicksand';
+    text-align: center;
+  }
+  mat-card-content{
+    width: 100%;
+  }
+  .login-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-container > * {
+    width: 100%;
+  }
+  /* input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+  } */
+  
+  .login-card{
+    position: relative;
+    padding: 8px;
+    margin:auto;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #FFF;
+    color: #00796B;
+    width: 400px;
+  }
+  .flash-message {
+    color: #00796B;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+  }
+  
+  .white-text{
+    color:#FFF;
+  }
+  
+  .mat-raised-button{
+    background-color: #00796B;
+    color: #B2DFDB;
+  }
+  
+  .header-login-card{
+    border-top-left-radius: 8px;
+    background-color: #00796B;
+    color: #E0F2F1;
+  }
+  
+  .mdl-grid{
+    /* background-image: url(http://backgroundcheckall.com/wp-content/uploads/2017/12/blurred-background-app-9.jpg); */
+    background-image: url(http://i66.tinypic.com/23vc9ar.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 98.35%;
+  }
+  

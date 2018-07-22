@@ -1,0 +1,161 @@
+<app-header></app-header>
+
+<div class="profile-body">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <div mat-card-avatar class="profile-header-image"></div>
+      <mat-card-title *ngFor="let data of results">{{data.nim}}</mat-card-title>
+      <mat-card-subtitle *ngFor="let data of results">{{data.nama}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="profile-card-content">
+      <mat-accordion> 
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Informasi Umum
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <hr>
+          <mat-list> 
+            <table>
+              <tbody>
+              <tr>
+                  <td><label>NIM</label></td>
+                  <td *ngFor="let data of results">{{data.nim}}</td>
+              </tr>
+              <tr>
+                  <td>Nama</td>
+                  <td *ngFor="let data of results">{{data.nama}}</td>
+              </tr>
+              <tr>
+                  <td>Jurusan</td>
+                  <td>Pendidikan Teknik Elektronika dan Informatika</td>
+              </tr>
+              <tr>
+                  <td>Program Studi</td>
+                  <td *ngFor="let data of results">{{data.prodi}}</td>
+              </tr>
+              <tr>
+                  <td>Angkatan</td>
+                  <td *ngFor="let data of results">{{data.angkatan}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mat-list>
+          <div align="right">
+              <button class="admin-btn" mat-raised-button routerLink="/admin" *ngIf="authService.adminMenu()">Admin</button>
+          </div>
+          
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Riwayat Tempat Praktik Industri
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form (submit)="updateProfileCompany()">
+
+          <mat-form-field>
+              <mat-select name="company" [(ngModel)]="company" #companyValue placeholder="Pilih Perusahaan">
+                  <mat-option *ngFor="let company of companies" [value]="company._id">
+                  {{company.perusahaan}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field>
+
+          <div align="right">
+            <button mat-raised-button class="save-btn">Simpan</button>
+          </div>
+          </form>
+          <br>
+          Perusahaan Belum Tercantum? <a routerLink="/company">Tambah Disini</a>
+          <hr>
+          <mat-list> 
+              <table>
+                <tbody>
+                <tr>
+                    <td>Nama Perusahaan</td>
+                    <td *ngFor="let data of results">{{data.perusahaan}}</td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td *ngFor="let data of results">{{data.alamat}}</td>
+                </tr>
+                <tr>
+                    <td>Email Perusahaan</td>
+                    <td *ngFor="let data of results">{{data.email_perusahaan}}</td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td *ngFor="let data of results"><a target="_blank" href="http://www.{{data.website}}">{{data.website}}</a></td>
+                </tr>
+                <tr>
+                    <td>Telepon</td>
+                    <td *ngFor="let data of results">{{data.telepon}}</td>
+                </tr>
+                <tr>
+                    <td>Bidang</td>
+                    <td *ngFor="let data of results">{{data.kategori}}</td>
+                </tr>
+                </tbody>
+              </table>
+          </mat-list>
+          <div align="right">
+            <button mat-raised-button class="delete-btn" (click)="resetProfileCompany()">Hapus Riwayat</button>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Informasi Akun
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <div class="flash-message">
+            <mat-card-content>
+              <flash-message>
+              </flash-message>
+            </mat-card-content>
+          </div>
+
+          <form (submit)="updateAccount($event)">
+          <div class="account-container">
+              <mat-form-field>
+                  <input name="nim" [(ngModel)]="nim" matInput #input type="number" placeholder="NIM" required>
+                  <mat-icon matSuffix matTooltip="Masukkan Nomor Induk Mahasiswa dengan benar.">credit_card</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <input name="nama" [(ngModel)]="nama" matInput #input maxlength="40" type="text" placeholder="Nama Lengkap" required>
+                  <mat-icon matSuffix matTooltip="Masukkan Nama Lengkap" >person</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <input name="email" [(ngModel)]="email" matInput #input maxlength="40" type="text" placeholder="E-mail" required>
+                  <mat-icon matSuffix matTooltip="Masukkan Email UNY / Email Aktif" >mail</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <input name="password" [(ngModel)]="password" matInput placeholder="Masukkan Password" [type]="hide ? 'password' : 'text'" required>
+                  <mat-icon matSuffix matTooltip="Masukkan Password dengan benar"  (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <input name="repassword" [(ngModel)]="repassword" matInput placeholder="Masukkan Password" [type]="hide ? 'password' : 'text'" required>
+                  <mat-icon matSuffix  matTooltip="Masukkan Password dengan benar" (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </mat-form-field>
+                <br>
+                <div align="right">
+                    <button class="save-btn" mat-raised-button (click)="updateAccount()">Simpan</button>
+                </div>
+          </div>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<app-footer></app-footer>

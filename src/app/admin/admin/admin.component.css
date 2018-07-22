@@ -1,0 +1,242 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #E0F2F1;
+}
+  
+.admin-is-mobile .admin-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+  
+h1.admin-app-name {
+ margin-left: 8px;
+ font-family: 'Quicksand';
+}
+  
+.admin-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+}
+  
+.admin-is-mobile .admin-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}
+
+.mat-toolbar{
+    background-color: #CFD8DC;
+    color: #263238;
+}
+
+mat-sidenav{
+    background-color:#263238;
+    color: #B2DFDB;
+    width: 250px;
+}
+
+.mat-menu-button{
+    width: 200px;
+}
+.sidenav-button{
+    text-align:left;
+    width: 100%;
+    margin-bottom:5px;
+    padding: 10px;
+}
+.sidenav-button:hover{
+    text-align:left;
+    width: 100%;
+    margin-bottom:5px;
+    padding: 10px;
+    color:#FFF;
+    background-color: #455A64;
+}
+
+mat-list{
+    width: 100%;
+}
+mat-sidenav-container {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+mat-expansion-panel{
+    box-shadow: none !important;
+    background-color: #263238;
+    color: #B2DFDB;
+}
+mat-expansion-panel-header{
+    color: #B2DFDB;
+    background-color: #263238;
+}
+mat-expansion-panel-header:hover{
+    text-align: left;
+    background-color: #455A64;
+}
+
+mat-panel-title{
+    color: #B2DFDB;
+}
+/* Admin Company */
+/* Structure */
+.company-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .company-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+    width: 100%;
+  }
+  mat-table{
+    width: 100%;
+  }
+  .white-background{
+    background: #FFF;
+  }
+  .mdl-grid.center-items {
+    justify-content: center;
+}
+
+.mdl-grid.center-items {
+  justify-content: center;
+}
+
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
+@media screen and (max-width: 767px) {
+  .table-responsive {
+      width: 100%;
+      margin-bottom: 15px;
+      overflow-y: hidden;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      border: 1px solid #ddd;
+  }
+  .table-responsive > .table {
+      margin-bottom: 0;
+  }
+  .table-responsive > .table > thead > tr > th,
+  .table-responsive > .table > tbody > tr > th,
+  .table-responsive > .table > tfoot > tr > th,
+  .table-responsive > .table > thead > tr > td,
+  .table-responsive > .table > tbody > tr > td,
+  .table-responsive > .table > tfoot > tr > td {
+      white-space: nowrap;
+  }
+  .table-responsive > .table-bordered {
+      border: 0;
+  }
+  .table-responsive > .table-bordered > thead > tr > th:first-child,
+  .table-responsive > .table-bordered > tbody > tr > th:first-child,
+  .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+  .table-responsive > .table-bordered > thead > tr > td:first-child,
+  .table-responsive > .table-bordered > tbody > tr > td:first-child,
+  .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+      border-left: 0;
+  }
+  .table-responsive > .table-bordered > thead > tr > th:last-child,
+  .table-responsive > .table-bordered > tbody > tr > th:last-child,
+  .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+  .table-responsive > .table-bordered > thead > tr > td:last-child,
+  .table-responsive > .table-bordered > tbody > tr > td:last-child,
+  .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+      border-right: 0;
+  }
+  .table-responsive > .table-bordered > tbody > tr:last-child > th,
+  .table-responsive > .table-bordered > tfoot > tr:last-child > th,
+  .table-responsive > .table-bordered > tbody > tr:last-child > td,
+  .table-responsive > .table-bordered > tfoot > tr:last-child > td {
+      border-bottom: 0;
+  }
+}
+.add-btn{
+  color:  #00796B;
+}
+.edit-btn{
+  color : #1E88E5;
+}
+.save-btn{
+  background-color : #3F51B5;
+  color: #FFF;
+}
+.delete-btn{
+  color:#EF5350;
+}
+.mat-cell{
+    
+}
+mat-cell{
+    text-align:justify;
+}
+mat-cell:nth-child(1),
+mat-header-cell:nth-child(1) {
+    flex: 0 0 15%;
+}
+mat-cell:nth-child(2),
+mat-header-cell:nth-child(2) {
+    flex: 0 0 27%;
+}
+mat-cell:nth-child(3),
+mat-header-cell:nth-child(3) {
+    flex: 0 0 7%;
+}
+mat-cell:nth-child(4),
+mat-header-cell:nth-child(4) {
+    flex: 0 0 8%;
+}
+mat-cell:nth-child(5),
+mat-header-cell:nth-child(5) {
+    flex: 0 0 8%;
+}
+mat-cell:nth-child(6),
+mat-header-cell:nth-child(6) {
+    flex: 0 0 5%;
+}
+mat-cell:nth-child(7),
+mat-header-cell:nth-child(7) {
+    flex: 0 0 7%;
+}
+mat-cell:nth-child(8),
+mat-header-cell:nth-child(8) {
+    flex: 0 0 7%;
+}
+mat-cell:nth-child(9),
+mat-header-cell:nth-child(9) {
+    flex: 0 0 7%;
+}
+mat-cell:nth-child(10),
+mat-header-cell:nth-child(10) {
+    flex: 0 0 10%;
+}
+
+.table-shadow{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+/*  */
+
+.user-chip{
+    background-color: #00796B;
+    color: #B2DFDB;
+}

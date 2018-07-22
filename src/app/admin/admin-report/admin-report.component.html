@@ -1,0 +1,88 @@
+<mat-toolbar class="mat-toolbar" *ngIf="authService.loggedIn()">
+    <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="admin-app-name">IPT-JPTEI UNY</h1>
+    <span class="nav-spacer"></span>
+    <button mat-icon-button fxShow="false" fxShow.gt-sm [matMenuTriggerFor]="menu"  *ngIf="authService.loggedIn()">
+        <mat-icon class="avatar">more_vert</mat-icon>
+    </button>
+</mat-toolbar>
+      
+<mat-menu #menu="matMenu" style="width:100px;" >
+    <button class="mat-menu-button" mat-menu-item routerLink="/dashboard"  *ngIf="authService.loggedIn()">
+        <span>Beranda</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item routerLink="/profile"  *ngIf="authService.loggedIn()">
+        <span>Profil</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item routerLink="/company" *ngIf="authService.loggedIn()"> 
+        <span>Perusahaan</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item (click)="logoutUser()"  *ngIf="authService.loggedIn()">
+        <span>Keluar</span>
+    </button>
+</mat-menu>
+      
+<mat-sidenav-container autosize>
+        <mat-sidenav #sideNav mode="side" opened>
+            <a class="sidenav-button" mat-button routerLink="/admin"><mat-icon>dashboard</mat-icon> Dashboard</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/users"><mat-icon>person</mat-icon> Users</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/companies"><mat-icon>business</mat-icon> Companies</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/report"><mat-icon>warning</mat-icon> Report</a>
+            <mat-divider></mat-divider>
+            <a class="sidenav-button" mat-button routerLink="/admin/questioner"><mat-icon>message</mat-icon> Questioner</a>
+        </mat-sidenav>
+        <mat-sidenav-content>
+        <div class="mdl-grid">
+          <div class="company-container table-shadow">
+            <div class="company-header">
+                <div class="">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
+                </div> 
+            </div>
+
+            <div class="table-responsive">
+                <mat-table #table [dataSource]="dataSource" matSort>
+                <!-- Title Column -->
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef> Judul </mat-header-cell>
+                    <mat-cell *matCellDef="let reports"><a matTooltip="Click to View Report Details"  routerLink="/view-report/{{reports._id}}">{{reports.title}}</a></mat-cell>
+                </ng-container>
+                <!-- Text Column -->
+                <ng-container matColumnDef="text">
+                  <mat-header-cell *matHeaderCellDef> Deskripsi </mat-header-cell>
+                  <mat-cell *matCellDef="let reports"> {{reports.text}} </mat-cell>
+                </ng-container>
+                <!-- Created At Column -->
+                <ng-container matColumnDef="created_at">
+                  <mat-header-cell *matHeaderCellDef> Dibuat Pada </mat-header-cell>
+                  <mat-cell *matCellDef="let reports"> {{reports.created_at}} </mat-cell>
+                </ng-container>
+                <!-- Author Column -->
+                <ng-container matColumnDef="author">
+                  <mat-header-cell *matHeaderCellDef> Pelapor </mat-header-cell>
+                  <mat-cell *matCellDef="let reports"> {{reports.author}} </mat-cell>
+                </ng-container>
+                <!-- Option Column -->
+                <ng-container matColumnDef="option">
+                    <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>
+                    <mat-cell *matCellDef="let reports">
+                      <a mat-button matTooltip="View Company" routerLink="/companies/{{reports.company}}">View Company</a>
+                      <button mat-icon-button class="delete-btn" matTooltip="Delete Selected Report"  (click)="deleteReport(reports)">
+                          <mat-icon>delete</mat-icon>
+                      </button>
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let reports; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+            </div>
+        </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>

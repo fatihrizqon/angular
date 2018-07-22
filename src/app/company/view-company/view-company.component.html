@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<div class="mdl-grid center-items">
+      <div class="mdl-cell mdl-cell--6-col" *ngIf="company">
+        <mat-card class="company-card">
+          <mat-card-header>
+            <div mat-card-avatar><mat-icon class="avatar-icon">business</mat-icon></div>
+            <mat-card-title>{{company.perusahaan}}</mat-card-title>
+            <mat-card-subtitle>
+              {{company.alamat}}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <table>
+              <tr>
+                <td><label>Email</label></td>
+                <td>: {{company.email_perusahaan}}</td>
+              </tr>
+              <tr>
+                <td><label>Telepon</label></td>
+                <td>: {{company.telepon}}</td>
+              </tr>
+              <tr>
+                <td><label>Website</label></td>
+                <td>: <a target="_blank" href="http://www.{{company.website}}">www.{{company.website}}</a></td>
+              </tr>
+              <tr>
+                <td><label>Bidang</label></td>
+                <td>: {{company.kategori}}</td>
+              </tr>
+            </table>
+            <hr>
+            <p align="justify">
+              {{company.deskripsi}}
+            </p>
+            <div align="right">
+              <button mat-icon-button matTooltip="Ubah Data Perusahaan" class="edit-btn" (click)="updateCompany(companies)" *ngIf="authService.adminMenu()"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button  matTooltip="Hapus Data Perusahaan" class="delete-btn" (click)="deleteCompany(companies)" *ngIf="authService.adminMenu()" ><mat-icon>delete</mat-icon></button>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <table>
+              <tr>
+                <td><mat-icon>person</mat-icon></td>
+                <td matTooltip="Jumlah Mahasiswa Praktik Industri {{company.students.length}}" >{{company.students.length}}</td>
+              </tr>
+            </table>
+          </mat-card-actions>
+      </mat-card>
+      </div>
+</div>
+
+<app-footer></app-footer>

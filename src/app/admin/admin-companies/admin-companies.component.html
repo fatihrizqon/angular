@@ -1,0 +1,123 @@
+<mat-toolbar class="mat-toolbar" *ngIf="authService.loggedIn()">
+    <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="admin-app-name">IPT-JPTEI UNY</h1>
+    <span class="nav-spacer"></span>
+    <button mat-icon-button fxShow="false" fxShow.gt-sm [matMenuTriggerFor]="menu"  *ngIf="authService.loggedIn()">
+        <mat-icon class="avatar">person</mat-icon>
+    </button>
+</mat-toolbar>
+      
+<mat-menu #menu="matMenu" style="width:100px;" >
+  <button class="mat-menu-button" mat-menu-item routerLink="/dashboard"  *ngIf="authService.loggedIn()">
+      <span>Beranda</span>
+  </button>
+  <button class="mat-menu-button"  mat-menu-item routerLink="/profile"  *ngIf="authService.loggedIn()">
+      <span>Profil</span>
+  </button>
+  <button class="mat-menu-button"  mat-menu-item routerLink="/company" *ngIf="authService.loggedIn()"> 
+      <span>Perusahaan</span>
+  </button>
+  <button class="mat-menu-button"  mat-menu-item (click)="logoutUser()"  *ngIf="authService.loggedIn()">
+      <span>Keluar</span>
+  </button>
+</mat-menu>
+      
+<mat-sidenav-container autosize>
+        <mat-sidenav #sideNav mode="side" opened>
+            <a class="sidenav-button" mat-button routerLink="/admin"><mat-icon>dashboard</mat-icon> Dashboard</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/users"><mat-icon>person</mat-icon> Users</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/companies"><mat-icon>business</mat-icon> Companies</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/report"><mat-icon>warning</mat-icon> Report</a>
+            <mat-divider></mat-divider>
+            <a class="sidenav-button" mat-button routerLink="/admin/questioner"><mat-icon>message</mat-icon> Questioner</a>
+        </mat-sidenav>
+        <mat-sidenav-content> 
+        <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col white-background">
+          <div class="company-container table-shadow">
+            <div class="company-header">
+                
+                <div class="">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
+                </div> 
+               
+                <div class="" align="left">
+                    <a mat-icon-button class="add-btn" matTooltip="Create a New Company"  routerLink="/admin/companies/create">
+                      <mat-icon>add</mat-icon>
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+            <mat-table #table [dataSource]="dataSource" matSort>
+              <!-- Perusahaan Column -->
+              <ng-container matColumnDef="perusahaan">
+                <mat-header-cell *matHeaderCellDef> Perusahaan </mat-header-cell>
+                <mat-cell *matCellDef="let companies"><a matTooltip="Click to View Company Details"  routerLink="/companies/{{companies._id}}">{{companies.perusahaan}}</a></mat-cell>
+              </ng-container>
+              <!-- Alamat Column -->
+              <ng-container matColumnDef="alamat">
+                <mat-header-cell *matHeaderCellDef> Alamat </mat-header-cell>
+                <mat-cell *matCellDef="let companies"> {{companies.alamat}} </mat-cell>
+              </ng-container>
+              <!-- Email Column -->
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let companies"> {{companies.email_perusahaan}} </mat-cell>
+              </ng-container>
+              <!-- Telepon Column -->
+              <ng-container matColumnDef="telepon">
+                <mat-header-cell *matHeaderCellDef> Telepon </mat-header-cell>
+                <mat-cell *matCellDef="let companies"> {{companies.telepon}} </mat-cell>
+              </ng-container>
+              <!-- Website Column -->
+              <ng-container matColumnDef="website">
+                <mat-header-cell *matHeaderCellDef> Website </mat-header-cell>
+                <mat-cell *matCellDef="let companies"> <a target="_blank" href="http://{{companies.website}}">{{companies.website}}</a> </mat-cell>
+              </ng-container>
+              <!-- Students Column -->
+              <ng-container matColumnDef="students">
+                <mat-header-cell *matHeaderCellDef> Mahasiswa </mat-header-cell>
+                <mat-cell *matCellDef="let companies"> {{companies.students.length}} </mat-cell>
+              </ng-container>
+              <!-- Kategori Column -->
+              <ng-container matColumnDef="kategori">
+                <mat-header-cell *matHeaderCellDef> Kategori </mat-header-cell>
+                <mat-cell *matCellDef="let companies"> {{companies.kategori}} </mat-cell>
+              </ng-container>
+              <!-- Author Column -->
+              <ng-container matColumnDef="author">
+                <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+                <mat-cell *matCellDef="let companies"><mat-chip-list> <mat-chip matTooltip="Click to See User Profile"  class="user-chip">{{companies.author}}</mat-chip> </mat-chip-list></mat-cell>
+              </ng-container>
+              <!-- Last Update Column -->
+              <ng-container matColumnDef="update_by">
+                <mat-header-cell *matHeaderCellDef> Updated By </mat-header-cell>
+                <mat-cell *matCellDef="let companies"><mat-chip-list> <mat-chip matTooltip="Click to See User Profile"  class="user-chip">{{companies.update_by}}</mat-chip> </mat-chip-list></mat-cell>
+              </ng-container>
+              <!-- Option Column -->
+              <ng-container matColumnDef="option">
+                  <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>
+                  <mat-cell *matCellDef="let companies">
+                    <button mat-icon-button class="edit-btn" matTooltip="Update Company Data" (click)="updateCompany(companies)" *ngIf="authService.adminMenu()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="delete-btn" matTooltip="Delete Selected Company"  (click)="deleteCompany(companies)" *ngIf="authService.adminMenu()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                  </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let companies; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+          </div>
+        </div>
+        </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>

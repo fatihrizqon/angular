@@ -1,0 +1,38 @@
+.admin-container {
+  width: 100%;
+  height:100%;
+  background-color:#CFD8DC;
+}
+  
+  .admin-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .admin-sidenav {
+    background-color:#37474F;
+    color: #B2DFDB; 
+  }
+  
+  mat-list{
+    width: 200px;
+  }
+  
+  .nav-list-btn{
+    text-align: left;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+  .nav-list-btn:hover{
+    text-align: left;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #4DB6AC;
+    color:#FFF;
+    padding-top:5px;
+    padding-bottom:5px;
+  }

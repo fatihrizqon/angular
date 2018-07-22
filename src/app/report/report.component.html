@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="mdl-grid">
+  <div class="mdl-layout-spacer"></div>
+  <div class="mdl-cell mdl-cell--8-col" *ngIf="company">
+      <mat-card class="company-card">
+          <mat-divider></mat-divider>
+          <br>
+          <mat-card-header>
+            <div mat-card-avatar><mat-icon class="avatar-icon">business</mat-icon></div>
+            <mat-card-title>{{company.perusahaan}}</mat-card-title>
+            <mat-card-subtitle>
+              {{company.alamat}}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <table>
+              <tr>
+                <td><label>Email</label></td>
+                <td>: {{company.email_perusahaan}}</td>
+              </tr>
+              <tr>
+                <td><label>Telepon</label></td>
+                <td>: {{company.telepon}}</td>
+              </tr>
+              <tr>
+                <td><label>Website</label></td>
+                <td>: <a target="_blank" href="http://{{company.website}}">{{company.website}}</a></td>
+              </tr>
+              <tr>
+                <td><label>Bidang</label></td>
+                <td>: {{company.kategori}}</td>
+              </tr>
+            </table>
+            <hr>
+            <p align="justify">
+              {{company.deskripsi}}
+            </p>
+
+            <mat-divider></mat-divider>
+            
+            <div class="warning-card">
+              <mat-card-content>
+                <flash-message>
+                </flash-message>
+              </mat-card-content>
+            </div>
+            <form>
+            <mat-form-field>
+              <input matInput name="title" [(ngModel)]="title"  placeholder="Judul Laporan">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <textarea name="text" [(ngModel)]="text"  rows="5" cols="40"  matInput placeholder="Deskripsi Laporan"></textarea>
+            </mat-form-field>
+            <br>
+            <div align="right">
+              <button mat-button class="add-btn" (click)="addReport()">Kirim</button>
+            </div>
+            </form>
+          </mat-card-content>
+      </mat-card>
+  </div>
+  <div class="mdl-layout-spacer"></div>
+</div>

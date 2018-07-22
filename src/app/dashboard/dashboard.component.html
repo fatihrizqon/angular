@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="mdl-grid center-items">
+  <div class="mdl-cell mdl-cell--4-col" align="center">
+      <mat-form-field class="search-form-field">
+          <input matInput type="text" placeholder="Search" [(ngModel)]="searchCompany"/>
+          <button *ngIf="searchCompany" matSuffix mat-icon-button aria-label="Clear" (click)="searchCompany=''">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+  </div>
+</div>
+<div class="mdl-grid center-items">
+      <div class="mdl-cell mdl-cell--4-col" *ngFor="let data of companies | companyFilter:searchCompany | companyFilter:sear">
+        <a (click)="getCompany(data)">
+          <mat-card class="company-card">
+              <label>Praktik Industri Bidang {{data.kategori}}</label>
+              <hr>
+              <mat-card-header>
+                <div mat-card-avatar><mat-icon class="avatar-icon">business</mat-icon></div>
+                <mat-card-title>{{data.perusahaan}}</mat-card-title>
+                <mat-card-subtitle>{{data.alamat}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <!-- Content -->
+              </mat-card-content>
+              <mat-card-actions>
+                <table>
+                  <tr matTooltip="Jumlah Mahasiswa Praktik Industri {{data.students.length}}">
+                    <td><mat-icon>person</mat-icon></td>
+                    <td>{{data.students.length}}</td>
+                  </tr>
+                </table>
+              </mat-card-actions>
+          </mat-card>
+        </a>
+      </div>
+      
+      <div class="mdl-cell mdl-cell--12-col">
+        <!-- Paginator -->
+      </div>
+</div>

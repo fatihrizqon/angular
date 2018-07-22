@@ -1,0 +1,105 @@
+mat-card{
+  margin: auto;
+}
+h5{
+  font-family: 'Quicksand';
+  text-align: center;
+}
+mat-card-content{
+  width: 100%;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+.login-header-image {
+  background-image: url('http://i68.tinypic.com/352hg79.png');
+  background-size: cover;
+}
+.login-container > * {
+  width: 100%;
+}
+.login-card{
+  position: relative;
+  padding: 8px;
+  margin:auto;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #FFF;
+  color: #FFC107;
+  width: 400px;
+}
+.flash-message {
+  color: #FFC107;
+  font-family: 'Quicksand';
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.white-text{
+  color:#FFF;
+}
+
+.mat-raised-button{
+  background-color: #FFC107;
+  color: #FFF;
+}
+
+.header-login-card{
+  border-top-left-radius: 8px;
+  background-color: #FFC107;
+  color: #FFF;
+}
+
+.header-transition-background{
+	background: linear-gradient(-45deg, #F44336, #E65100, #FFC400, #00E676, #FFC400, #E65100, #F44336);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+.mdl-grid{
+  /* background-image: url(http://backgroundcheckall.com/wp-content/uploads/2017/12/blurred-background-app-9.jpg); */
+  background-image: url(http://i66.tinypic.com/23vc9ar.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 98.35%;
+}

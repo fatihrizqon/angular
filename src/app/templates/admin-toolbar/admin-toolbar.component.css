@@ -1,0 +1,44 @@
+.avatar{
+    color: #fff;
+    font-size: 20pt;
+}
+.mat-toolbar{
+    background-color: #00796B;
+    color: #B2DFDB;
+}
+.mat-raised-button{
+    background-color: #00796B;
+    color: #B2DFDB;
+}
+.mat-menu-button{
+    width: 200px;
+}
+
+mat-sidenav-container {
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+}
+  
+mat-list{
+    width: 100%;
+}
+
+.list-button{
+    text-align:left;
+    width: 100%;
+    margin-bottom:5px;
+}
+
+.admin-container {
+    width: 100%;
+    height:auto;
+}
+.admin-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}    

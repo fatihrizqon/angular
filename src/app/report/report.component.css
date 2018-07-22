@@ -1,0 +1,51 @@
+mat-form-field{
+    width: 100%;
+}
+mat-card-avatar{
+    background-color: #FFC107;
+}
+.avatar-icon{ 
+    color: #FFC107;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+.company-card{
+    max-width: 100%;
+    height: auto;
+}
+
+.mdl-grid.center-items {
+    justify-content: center;
+}
+.mat-card-actions{
+    background-color: #FFC107;
+    color: #FFF;
+}
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+} 
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    /*whatever width you want*/
+}
+.add-btn{
+    background-color: #FFC107;
+    color: #FFF;
+}
+
+.warning-card {
+    color: #FFC107;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar id="myToolbar" *ngIf="authService.loggedIn()">
+  <a style="text-decoration: none; color:#FFF;" routerLink="/"><mat-icon matSuffix>business</mat-icon></a>
+  <!-- This fills the remaining space of the current row -->
+  <span class="nav-spacer"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm *ngIf="authService.loggedIn()" >
+      <a mat-button routerLink="/dashboard">Beranda</a>
+      <a mat-button routerLink="/profile">Profil</a>
+      <a mat-button routerLink="/company">Perusahaan</a>
+      <a mat-button (click)="logoutUser()">Keluar</a>
+  </div>
+
+  <button mat-button fxHide="false" fxHide.gt-sm [matMenuTriggerFor]="menu" *ngIf="authService.loggedIn()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- 
+  <mat-toolbar>
+    <button mat-button>
+        Admin Mode
+    </button>
+    <span class="nav-spacer"></span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm *ngIf="authService.loggedIn()" >
+        <a mat-button (click)="logoutUser()">Sign Out</a>
+    </div>
+</mat-toolbar>
+-->
+
+<mat-menu #menu="matMenu" style="width:100px;">
+<button class="mat-menu-button" mat-menu-item routerLink="/dashboard" *ngIf="authService.loggedIn()" >
+  <span>Beranda</span>
+</button>
+<button class="mat-menu-button"  mat-menu-item routerLink="/profile" *ngIf="authService.loggedIn()" >
+  <span>Profil</span>
+</button>
+<button class="mat-menu-button"  mat-menu-item routerLink="/company" *ngIf="authService.loggedIn()" >
+  <span>Perusahaan</span>
+</button>
+<button class="mat-menu-button"  mat-menu-item (click)="logoutUser()" *ngIf="authService.loggedIn()" >
+  <span>Keluar</span>
+</button>
+</mat-menu>

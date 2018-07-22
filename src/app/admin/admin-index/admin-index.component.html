@@ -1,0 +1,59 @@
+<mat-toolbar class="mat-toolbar" *ngIf="authService.loggedIn()">
+    <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="admin-app-name">IPT-JPTEI UNY</h1>
+    <span class="nav-spacer"></span>
+    <button mat-icon-button fxShow="false" fxShow.gt-sm [matMenuTriggerFor]="menu"  *ngIf="authService.loggedIn()">
+        <mat-icon class="avatar">more_vert</mat-icon>
+    </button>
+</mat-toolbar>
+      
+<mat-menu #menu="matMenu" style="width:100px;" >
+    <button class="mat-menu-button" mat-menu-item routerLink="/dashboard"  *ngIf="authService.loggedIn()">
+        <span>Beranda</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item routerLink="/profile"  *ngIf="authService.loggedIn()">
+        <span>Profil</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item routerLink="/company" *ngIf="authService.loggedIn()"> 
+        <span>Perusahaan</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item (click)="logoutUser()"  *ngIf="authService.loggedIn()">
+        <span>Keluar</span>
+    </button>
+</mat-menu>
+      
+<mat-sidenav-container autosize>
+        <mat-sidenav #sideNav mode="side" opened>
+            <a class="sidenav-button" mat-button routerLink="/admin"><mat-icon>dashboard</mat-icon> Dashboard</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/users"><mat-icon>person</mat-icon> Users</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/companies"><mat-icon>business</mat-icon> Companies</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/report"><mat-icon>warning</mat-icon> Report</a>
+            <mat-divider></mat-divider>
+            <a class="sidenav-button" mat-button routerLink="/admin/questioner"><mat-icon>message</mat-icon> Questioner</a>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">
+                <mat-card>Simple card</mat-card>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <mat-card>Simple card</mat-card>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <mat-card>Simple card</mat-card>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+                <mat-card>Simple card</mat-card>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+                <mat-card>Simple card</mat-card>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col">
+                <mat-card>Simple card</mat-card>
+            </div>
+        </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>

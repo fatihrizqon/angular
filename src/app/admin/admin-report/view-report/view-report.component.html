@@ -1,0 +1,49 @@
+<mat-toolbar class="mat-toolbar" *ngIf="authService.loggedIn()">
+    <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="admin-app-name">IPT-JPTEI UNY</h1>
+    <span class="nav-spacer"></span>
+    <button mat-icon-button fxShow="false" fxShow.gt-sm [matMenuTriggerFor]="menu"  *ngIf="authService.loggedIn()">
+        <mat-icon class="avatar">more_vert</mat-icon>
+    </button>
+</mat-toolbar>
+      
+<mat-menu #menu="matMenu" style="width:100px;" >
+    <button class="mat-menu-button" mat-menu-item routerLink="/dashboard"  *ngIf="authService.loggedIn()">
+        <span>Home</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item routerLink="/profile"  *ngIf="authService.loggedIn()">
+        <span>Profile</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item routerLink="/data-tracer" *ngIf="authService.loggedIn()"> 
+        <span>Data Tracer</span>
+    </button>
+    <button class="mat-menu-button"  mat-menu-item (click)="logoutUser()"  *ngIf="authService.loggedIn()">
+        <span>Log Out</span>
+    </button>
+</mat-menu>
+      
+<mat-sidenav-container autosize>
+        <mat-sidenav #sideNav mode="side" opened>
+            <a class="sidenav-button" mat-button routerLink="/admin"><mat-icon>dashboard</mat-icon> Dashboard</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/users"><mat-icon>person</mat-icon> Users</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/companies"><mat-icon>business</mat-icon> Companies</a>
+            <a class="sidenav-button" mat-button routerLink="/admin/report"><mat-icon>warning</mat-icon> Report</a>
+            <mat-divider></mat-divider>
+            <a class="sidenav-button" mat-button routerLink="/admin/questioner"><mat-icon>message</mat-icon> Questioner</a>
+        </mat-sidenav>
+        <mat-sidenav-content>
+        <div class="mdl-grid"  *ngIf="report">
+          <mat-list>
+            <h5>{{report.title}}</h5>
+            <mat-divider></mat-divider>
+            <label><b>Created by : {{report.author}} - on {{report.created_at}}</b></label>
+            <br>
+            <p>{{report.text}}</p>
+            <hr>
+            <button>Respon</button>
+          </mat-list> 
+        </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>
