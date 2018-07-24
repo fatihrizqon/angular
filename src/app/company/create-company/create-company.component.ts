@@ -78,10 +78,14 @@ export class CreateCompanyComponent implements OnInit {
     this.companyService.addCompany(company).subscribe(company => {
       this.company = company;
     });
-    this.authService.upgrade(user).subscribe(user => {
-      this.user = user;
-    });
-    this.route.navigate(['/company']);
+    if(user.level == 0){
+      this.authService.upgrade(user).subscribe(user => {
+        this.user = user;
+      });
+      this.route.navigate(['/company']);
+    }else{
+      this.route.navigate(['/dashboard']);
+    }
   }
 
 }

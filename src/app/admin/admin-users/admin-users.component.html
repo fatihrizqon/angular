@@ -34,8 +34,75 @@
             <a class="sidenav-button" mat-button routerLink="/admin/questioner"><mat-icon>message</mat-icon> Questioner</a>
         </mat-sidenav>
         <mat-sidenav-content>
-        <div class="mdl-grid">
-            Admin Users
-        </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col white-background">
+                  <div class="company-container table-shadow">
+                    <div class="company-header">
+                        
+                        <div class="">
+                            <mat-form-field>
+                              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                            </mat-form-field>
+                        </div> 
+                       
+                        <div class="" align="left">
+                            <a mat-icon-button class="add-btn" matTooltip="Create a New Company"  routerLink="/admin/companies/create">
+                              <mat-icon>add</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <div class="table-responsive">
+                            <mat-table #table [dataSource]="dataSource" matSort>
+                              <!-- Nama Column -->
+                              <ng-container matColumnDef="nama">
+                                <mat-header-cell *matHeaderCellDef> Nama </mat-header-cell>
+                                <mat-cell *matCellDef="let users">{{users.nama}}</mat-cell>
+                              </ng-container>
+                              <!-- NIM Column -->
+                              <ng-container matColumnDef="nim">
+                                <mat-header-cell *matHeaderCellDef> NIM </mat-header-cell>
+                                <mat-cell class="users" *matCellDef="let users"> {{users.nim}} </mat-cell>
+                              </ng-container>
+                              <!-- Email Column -->
+                              <ng-container matColumnDef="email">
+                                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                                <mat-cell class="users" *matCellDef="let users"> {{users.email}} </mat-cell>
+                              </ng-container>
+                              <!-- Prodi Column -->
+                              <ng-container matColumnDef="prodi">
+                                <mat-header-cell *matHeaderCellDef> Program Studi </mat-header-cell>
+                                <mat-cell class="users" *matCellDef="let users"> {{users.prodi}} </mat-cell>
+                              </ng-container>
+                              <!-- Angkatan Column -->
+                              <ng-container matColumnDef="angkatan">
+                                <mat-header-cell *matHeaderCellDef> Angkatan </mat-header-cell>
+                                <mat-cell class="users" *matCellDef="let users">{{users.angkatan}}</mat-cell>
+                              </ng-container>
+                              <!-- Level Column -->
+                              <ng-container matColumnDef="level">
+                                <mat-header-cell *matHeaderCellDef> Mahasiswa </mat-header-cell>
+                                <mat-cell class="users" *matCellDef="let users"> {{users.level}} </mat-cell>
+                              </ng-container>
+                              <!-- Option Column -->
+                              <ng-container matColumnDef="option">
+                                  <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>
+                                  <mat-cell class="users" *matCellDef="let users">
+                                    <button mat-icon-button class="star-btn" matTooltip="Make Admin" (click)="makeAdmin(users)" *ngIf="authService.adminMenu()">
+                                        <mat-icon>star</mat-icon>
+                                    </button>
+                                    <button mat-icon-button class="delete-btn" matTooltip="Delete Selected Users"  (click)="deleteUser(users)" *ngIf="authService.adminMenu()">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                  </mat-cell>
+                              </ng-container>
+                
+                              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                              <mat-row *matRowDef="let companies; columns: displayedColumns;"></mat-row>
+                            </mat-table>
+                          </div>
+                  </div>
+                </div>
+                </div>
         </mat-sidenav-content>
 </mat-sidenav-container>

@@ -32,7 +32,7 @@ export class AdminCompaniesComponent implements OnInit {
     let token = localStorage.getItem('id_token');
     let level = Number(localStorage.getItem('level'));
     if(this.authService.loggedIn(user, token, level)) {
-      if(level == 0 || level == 1){
+      if(level != 2){
         this.router.navigate(['/dashboard']);
         console.log('Unauthorized.');
       }else{
@@ -77,6 +77,7 @@ export class AdminCompaniesComponent implements OnInit {
     this.companyService.deleteCompany(_id).subscribe(
       _id => {
         console.log("Delete Success.");
+        window.location.reload();
       },
       err => {
         console.log(err);

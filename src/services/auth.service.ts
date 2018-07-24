@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class AuthService {
   // private baseUri:String='';
   private baseUri:String='http://localhost:8080/';
-  // private baseUri:String='http://192.168.100.10:3000';
   authToken: any;
   user     : any;
   level    : any;
@@ -124,12 +123,31 @@ export class AuthService {
       return false;
     }
   }
+  
+  makeAdmin(_id){
+    this.loadToken();
+    let headers = new Headers()
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    console.log(_id)
+    return this.http.put(this.baseUri+'users/makeAdmin/'+_id,null, {headers: headers})
+    .map(res => res.json());
+  }
 
   adminMenu(){
     const level = Number(localStorage.getItem('level'));
     if(level == 2){
       return true;
     }
+  }
+
+  deleteUser(_id){ 
+    this.loadToken();
+    let headers = new Headers();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(this.baseUri+'users/deleteUser/'+_id,{headers:headers})
+    .map(res => res.json()); 
   }
 
   moderatorMenu(){
