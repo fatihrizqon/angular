@@ -49,28 +49,33 @@
                 <!-- Title Column -->
                 <ng-container matColumnDef="title">
                     <mat-header-cell *matHeaderCellDef> Judul </mat-header-cell>
-                    <mat-cell *matCellDef="let reports"><a matTooltip="Click to View Report Details"  routerLink="/view-report/{{reports._id}}">{{reports.title}}</a></mat-cell>
+                    <mat-cell class="report-table" *matCellDef="let reports"><a matTooltip="Click to View Report Details"  routerLink="/view-report/{{reports._id}}">{{reports.title}}</a></mat-cell>
                 </ng-container>
                 <!-- Text Column -->
                 <ng-container matColumnDef="text">
                   <mat-header-cell *matHeaderCellDef> Deskripsi </mat-header-cell>
-                  <mat-cell *matCellDef="let reports"> {{reports.text}} </mat-cell>
+                  <mat-cell class="report-table" *matCellDef="let reports"> {{reports.text}} </mat-cell>
                 </ng-container>
                 <!-- Created At Column -->
                 <ng-container matColumnDef="created_at">
                   <mat-header-cell *matHeaderCellDef> Dibuat Pada </mat-header-cell>
-                  <mat-cell *matCellDef="let reports"> {{reports.created_at}} </mat-cell>
+                  <mat-cell class="report-table" *matCellDef="let reports"> {{reports.created_at}} </mat-cell>
                 </ng-container>
                 <!-- Author Column -->
                 <ng-container matColumnDef="author">
                   <mat-header-cell *matHeaderCellDef> Pelapor </mat-header-cell>
-                  <mat-cell *matCellDef="let reports"> {{reports.author}} </mat-cell>
+                  <mat-cell class="report-table" *matCellDef="let reports"> {{reports.author}} </mat-cell>
+                </ng-container>
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                  <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                  <mat-cell class="report-table" *matCellDef="let reports"> {{reports.status}} </mat-cell>
                 </ng-container>
                 <!-- Option Column -->
                 <ng-container matColumnDef="option">
                     <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>
                     <mat-cell *matCellDef="let reports">
-                      <a mat-button matTooltip="View Company" routerLink="/companies/{{reports.company}}">View Company</a>
+                      <button mat-icon-button class="add-btn" matTooltip="View Company" routerLink="/companies/{{reports.company}}"><mat-icon>visibility</mat-icon></button>
                       <button mat-icon-button class="delete-btn" matTooltip="Delete Selected Report"  (click)="deleteReport(reports)">
                           <mat-icon>delete</mat-icon>
                       </button>

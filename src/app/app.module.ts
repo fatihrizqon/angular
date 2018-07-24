@@ -12,6 +12,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FlashMessageModule, FlashMessage } from 'angular-flash-message';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';

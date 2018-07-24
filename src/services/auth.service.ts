@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  // private baseUri:String='';
-  private baseUri:String='http://localhost:8080/';
+  private baseUri:String='';
+  // private baseUri:String='http://localhost:8080/';
   authToken: any;
   user     : any;
   level    : any;

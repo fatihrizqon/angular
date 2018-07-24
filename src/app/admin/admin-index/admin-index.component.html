@@ -36,23 +36,53 @@
         </mat-sidenav>
         <mat-sidenav-content>
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--4-col">
-                <mat-card>Simple card</mat-card>
+            <div class="mdl-cell mdl-cell--4-col" *ngIf="users">
+                <mat-card>
+                    <mat-card-header>
+                    <div mat-card-avatar><mat-icon class="avatar edit-btn" >person</mat-icon></div>
+                    <mat-card-title>Pengguna Terdaftar : {{users.length}}</mat-card-title>
+                    <!-- <mat-card-subtitle>{{data.nama}}</mat-card-subtitle> -->
+                    </mat-card-header>
+                    <hr>
+                    <mat-card-content>
+                        <a routerLink="/admin/users">Lihat Detail</a>
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <div class="mdl-cell mdl-cell--4-col">
-                <mat-card>Simple card</mat-card>
+            <div class="mdl-cell mdl-cell--4-col" *ngIf="companies">
+                <mat-card>
+                    <mat-card-header>
+                    <div mat-card-avatar><mat-icon class="avatar add-btn">business</mat-icon></div>
+                    <mat-card-title>Perusahaan Terdaftar : {{companies.length}}</mat-card-title>
+                    <!-- <mat-card-subtitle>{{data.nama}}</mat-card-subtitle> -->
+                    </mat-card-header>
+                    <hr>
+                    <mat-card-content>
+                        <a routerLink="/admin/companies">Lihat Detail</a>
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <div class="mdl-cell mdl-cell--4-col">
-                <mat-card>Simple card</mat-card>
+            <div class="mdl-cell mdl-cell--4-col" *ngIf="reports">
+                <mat-card>
+                    <mat-card-header>
+                    <div mat-card-avatar><mat-icon class="avatar delete-btn">warning</mat-icon></div>
+                    <mat-card-title>Pengguna Terdaftar : {{reports.length}}</mat-card-title>
+                    <!-- <mat-card-subtitle>{{data.nama}}</mat-card-subtitle> -->
+                    </mat-card-header>
+                    <hr>
+                    <mat-card-content>
+                        <a routerLink="/admin/report">Lihat Detail</a>
+                    </mat-card-content>
+                </mat-card>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-                <mat-card>Simple card</mat-card>
+                <mat-card></mat-card>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-                <mat-card>Simple card</mat-card>
+                <mat-card></mat-card>
             </div>
             <div class="mdl-cell mdl-cell--12-col">
-                <mat-card>Simple card</mat-card>
+                <mat-card></mat-card>
             </div>
         </div>
         </mat-sidenav-content>

@@ -14,7 +14,7 @@ export class AdminReportComponent implements OnInit {
 
   report   : Object;
   reports  : Object;
-  displayedColumns = ['title', 'text', 'created_at', 'author', 'option'];
+  displayedColumns = ['title', 'text', 'created_at', 'author', 'status', 'option'];
   dataSource: MatTableDataSource<Report>;
   constructor(
     private router: Router,

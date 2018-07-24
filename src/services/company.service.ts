@@ -8,8 +8,8 @@ import { Company } from '../models/company.model';
  
 @Injectable()
 export class CompanyService {
-  // private baseUri:String='';  
-  private baseUri:String='http://localhost:8080/';
+  private baseUri:String='';  
+  // private baseUri:String='http://localhost:8080/';
   private company:Company;
 
   authToken: any;

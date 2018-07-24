@@ -12,8 +12,8 @@ export class ReportService {
   constructor(
     private http:Http,
   ) { }
-  // private baseUri:String='';
-  private baseUri:String='http://localhost:8080/';
+  private baseUri:String='';
+  // private baseUri:String='http://localhost:8080/';
 
   loadToken(){
     const token = localStorage.getItem('id_token'); 
